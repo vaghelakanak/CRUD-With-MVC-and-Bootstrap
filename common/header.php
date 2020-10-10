@@ -14,7 +14,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.php">Engineer.ai</a>
+      <a class="navbar-brand" href="index.php">Home Page</a>
     </div>
     <ul class="nav navbar-nav">      
       <li> <a href="index.php">Registration Page</a></li>      
