@@ -11,17 +11,11 @@
 		
 		
 		public function __construct(){
+			$this->createDatabaseIfNotExists();
 			$this->connect();
 		}
 		
 		private function connect(){	
-			$MainConn = new mysqli($this->host, $this->user, $this->pass);
-			/* Create database if not exist*/
-			 $CreateDbsql = "CREATE DATABASE IF NOT EXISTS ". $this->dbname;
-			$MainConn->query($CreateDbsql);
-			$MainConn->close();
-			
-			
 			$this->conn = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
 			if(!$this->conn){
 				$this->error = "Fatal Error: Can't connect to database".$this->conn->connect_error;
@@ -39,6 +33,13 @@
 				) ";
 				
 			$results=$this->conn->query($sql);
+		}
+		
+		public function createDatabaseIfNotExists() {
+			$MainConn = new mysqli($this->host, $this->user, $this->pass);
+                  	$CreateDbsql = "CREATE DATABASE IF NOT EXISTS ". $this->dbname;
+			$MainConn->query($CreateDbsql);
+			$MainConn->close();
 		}
 		
 		public function isRequired($data){
